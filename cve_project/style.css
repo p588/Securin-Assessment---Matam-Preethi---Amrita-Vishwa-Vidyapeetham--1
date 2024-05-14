@@ -1,0 +1,27 @@
+body {
+    font-family: sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+#total-records {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#cve-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#cve-table th,
+#cve-table td {
+    padding: 5px;
+    border: 1px solid #ddd;
+}
+
+#cve-table th {
+    text-align: left;
+}

@@ -1,0 +1,17 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #333;
+}
+
+#cve-list {
+    margin-top: 20px;
+}
+
+#cve-details {
+    margin-top: 20px;
+}

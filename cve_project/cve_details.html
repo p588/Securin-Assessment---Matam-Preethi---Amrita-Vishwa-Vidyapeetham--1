@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CVE Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <h1>CVE Details</h1>
+    <div id="cve-details">
+        <!-- Individual CVE details will be displayed here -->
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        // Function to fetch and display CVE details
+        function displayCveDetails() {
+            fetch('/cves') // Fetch data from Flask API
+                .then(response => response.json())
+                .then(cveDetails => {
+                    const cveDetailsContainer = document.getElementById('cve-details');
+
+                    // Clear previous content
+                    cveDetailsContainer.innerHTML = '';
+
+                    // Loop through each CVE detail
+                    cveDetails.forEach(cve => {
+                        // Create a new div element for each CVE
+                        const cveDiv = document.createElement('div');
+
+                        // Populate the div with CVE details
+                        cveDiv.innerHTML = `
+                            <p><strong>CVE ID:</strong> ${cve.cve_id}</p>
+                            <p><strong>Description:</strong> ${cve.description}</p>
+                            <p><strong>Published Date:</strong> ${cve.published_date}</p>
+                            <p><strong>Last Modified Date:</strong> ${cve.last_modified_date}</p>
+                            <p><strong>Score:</strong> ${cve.score}</p>
+                            <hr>
+                        `;
+
+                        // Append the CVE div to the container
+                        cveDetailsContainer.appendChild(cveDiv);
+                    });
+                });
+        }
+
+        // Call the function to display CVE details when the page loads
+        window.onload = displayCveDetails;
+    </script>
+</body>
+
+</html>
